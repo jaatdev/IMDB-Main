@@ -1,15 +1,12 @@
-Certainly, here's the complete corrected JavaScript code:
-
-```javascript
 const movieSearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');
 
-// load movies from API
 async function loadMovies(searchTerm) {
     const URL = `https://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=9483c861`;
     const res = await fetch(URL);
     const data = await res.json();
+    
     if (data.Response == "True") {
         displayMovieList(data.Search);
     }
@@ -31,7 +28,7 @@ function displayMovieList(movies) {
         let movieListItem = document.createElement('div');
         movieListItem.dataset.id = movies[idx].imdbID;
         movieListItem.classList.add('search-list-item');
-        let moviePoster = (movies[idx].Poster != "N/A") ? movies[idx].Poster : "image_not_found.png";
+        const moviePoster = (movies[idx].Poster != "N/A") ? movies[idx].Poster : "image_not_found.png";
 
         movieListItem.innerHTML = `
         <div class="search-item-thumbnail">
@@ -87,6 +84,3 @@ window.addEventListener('click', (event) => {
         searchList.classList.add('hide-search-list');
     }
 });
-```
-
-Make sure to replace the existing JavaScript code in your project with this corrected code. This should resolve the mixed content issue and other errors you were encountering.
