@@ -4,7 +4,8 @@ const resultGrid = document.getElementById('result-grid');
 
 // load movies from API
 async function loadMovies(searchTerm) {
-    const URL = `http://www.omdbapi.com/?s=${searchTerm}&page=1&apikey=9483c861`;
+    const URL = `https://www.omdbapi.com/?i=${movie.dataset.id}&apikey=9483c861`;
+
     const res = await fetch(URL);
     const data = await res.json();
     
@@ -52,7 +53,7 @@ function loadMovieDetails() {
         movie.addEventListener('click', async () => {
             searchList.classList.add('hide-search-list');
             movieSearchBox.value = "";
-            const result = await fetch(`http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=9483c861`);
+            const result = await fetch(`https://www.omdbapi.com/?i=${movie.dataset.id}&apikey=9483c861`);
             const movieDetails = await result.json();
             displayMovieDetails(movieDetails);
         });
